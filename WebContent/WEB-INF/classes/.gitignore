@@ -1,0 +1,6 @@
+/app.properties
+/dbpersistence.properties
+/dbpersistence.properties.copy
+/hibernate.cfg.xml
+/log4j.properties
+/lebah/
