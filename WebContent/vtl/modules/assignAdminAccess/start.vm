@@ -1,0 +1,5 @@
+<div class="module_title">Module Access Administrator</div>
+	
+<div id="div_main">
+	#parse("vtl/modules/assignAdminAccess/listMenus.vm")
+</div>

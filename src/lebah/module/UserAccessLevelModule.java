@@ -20,6 +20,10 @@ public class UserAccessLevelModule extends LebahUserModule {
 	@Override
 	public String start() {
 		
+		User user = (User) context.get("user");
+		
+		System.out.println("current user= " + user.getFirstName());
+		
 		return path + "/start.vm";
 	}
 	
@@ -99,6 +103,8 @@ public class UserAccessLevelModule extends LebahUserModule {
 				});
 			});;
 		});
+		
+		System.out.println(parents.size());
 		
 		parents.forEach(g -> {
 			System.out.println(g.getTitle());

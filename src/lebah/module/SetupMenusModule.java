@@ -133,20 +133,18 @@ public class SetupMenusModule extends LebahAdminModule {
 		if ( roles != null ) {
 			for ( String id : roles ) {
 				Role role = db.find(Role.class, id);
+				role.getMenus().add(menu);
 				menu.getRoles().add(role);
-			}
-		}
-		
-		if ( parent != null ) {
-			if ( add ) {
-				parent.getMenus().add(menu);
 			}
 		}
 		
 		db.ifAdd(add).saveOrUpdate(menu);
 		
-		
-		if ( parent != null ) return listgroup();
+		if ( parent != null ) {
+			if ( add ) parent.getMenus().add(menu);
+			db.update(parent);
+			return listgroup();
+		}
 		return list();
 	}
 	

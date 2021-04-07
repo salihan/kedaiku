@@ -42,6 +42,7 @@ public class CreateMenus {
 		
 		
 		String[][] childs = {
+				{"administration", "useraccessapproval","User Access Approval", "lebah.module.UserAccessLevelModule"},
 				{"administration", "shipregistration","Ship Registration", "mmdis.module.ShipRegistrationModule"}
 	
 		};
@@ -59,7 +60,7 @@ public class CreateMenus {
 			menu.setOrderNo(i);
 			menu.setIcon("fa fa-square-o");
 			
-			Role role = db.find(Role.class, "perkapalan");
+			Role role = db.find(Role.class, "admin");
 			menu.getRoles().add(role);
 			
 			childMenus.add(menu);

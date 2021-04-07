@@ -1,0 +1,8 @@
+<div class="input-group margin-bottom-sm">
+	<input name="searchName" class="form-control" type="text" placeholder="Search User's" onkeyup="if ( event.keyCode === 13 ) { sendAjax2('searchUsers','div_search','menuId=$!menu.id'); }">
+	<span class="input-group-addon" onclick="sendAjax2('searchUsers','div_search','menuId=$!menu.id')"><i class="fa fa-search fa-fw"></i></span>
+</div>
+
+<br/>
+	
+<div id="div_search"></div>

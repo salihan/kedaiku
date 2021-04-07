@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +15,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -50,6 +50,14 @@ public class Menu {
             inverseJoinColumns = {@JoinColumn(name = "role_id")}
     )
 	private List<Role> roles = new ArrayList<>();
+    
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "access_admins",
+            joinColumns = {@JoinColumn(name = "menu_id")},
+            inverseJoinColumns = {@JoinColumn(name = "user_id")}
+    )
+    private List<User> accessAdminUsers = new ArrayList<>();
     
     
     public Menu() {
@@ -197,5 +205,19 @@ public class Menu {
 		}
 		
 	}
+
+	public List<User> getAccessAdminUsers() {
+		return accessAdminUsers;
+	}
+
+
+	public void setAccessAdminUsers(List<User> accessAdminUsers) {
+		this.accessAdminUsers = accessAdminUsers;
+	}
+	
+	public boolean hasAccessAdmin(User user) {
+		return accessAdminUsers.stream().filter(u -> u.getId().equals(user.getId())).findAny().isPresent();
+	}
+
 
 }

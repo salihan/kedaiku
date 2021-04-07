@@ -1,0 +1,3 @@
+$usr.firstName
+
+<button type="button" class="btn btn-primary" onclick="sendAjax('assignUserAsAdmin','div_main','userId=$!usr.id&menuId=$!menu.id')">Assign as Admin Module</button>

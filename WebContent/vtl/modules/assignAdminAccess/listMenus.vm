@@ -1,0 +1,27 @@
+
+<table class="table">
+	
+	#foreach( $p in $parents )
+		<tr>
+			<td style="font-weight:bold;font-size:12pt">$p.title</td>
+			<td style="text-align:right">
+				<button type="button" class="btn btn-default" onclick="sendAjax('assignAdmins','div_main','menuId=$p.id')"><i class="fa fa-users" aria-hidden="true"></i></button>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			#if ( $p.accessAdminUsers.size() > 0 )
+				<ul>
+				#foreach( $u in $p.accessAdminUsers )
+					<li>$u.userName - $u.firstName</li>
+				#end
+				</ul>
+			#else
+				Not assigned to admins.
+			#end
+			</td>
+			<td>
+			</td>
+		</tr>
+	#end
+</table>

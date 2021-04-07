@@ -51,6 +51,14 @@ public class User {
     @OneToMany (fetch=FetchType.EAGER, mappedBy="user")
     private List<AccessLevel> accessLevels = new ArrayList<>();
     
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "access_admins",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "menu_id")}
+    )
+    private List<Menu> accessAdminMenus = new ArrayList<>();
+    
 	@Column(length=100)
 	private String avatarImageFileName;
 	@Column(length=100)
@@ -346,6 +354,14 @@ public class User {
 
 	public void setAccessLevels(List<AccessLevel> accessLevels) {
 		this.accessLevels = accessLevels;
+	}
+
+	public List<Menu> getAccessAdminMenus() {
+		return accessAdminMenus;
+	}
+
+	public void setAccessAdminMenus(List<Menu> accessAdminMenus) {
+		this.accessAdminMenus = accessAdminMenus;
 	}
 
 
