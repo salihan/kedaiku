@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lebah.util.PasswordService;
@@ -45,7 +46,11 @@ public class User {
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id")}
     )
-	private List<Role> secondaryRoles = new ArrayList<Role>();
+	private List<Role> secondaryRoles = new ArrayList<>();
+    
+    @OneToMany (fetch=FetchType.EAGER, mappedBy="user")
+    private List<AccessLevel> accessLevels = new ArrayList<>();
+    
 	@Column(length=100)
 	private String avatarImageFileName;
 	@Column(length=100)
@@ -334,7 +339,16 @@ public class User {
 	public void setDocumentFileName5(String documentFileName5) {
 		this.documentFileName5 = documentFileName5;
 	}
-	
+
+	public List<AccessLevel> getAccessLevels() {
+		return accessLevels;
+	}
+
+	public void setAccessLevels(List<AccessLevel> accessLevels) {
+		this.accessLevels = accessLevels;
+	}
+
+
 	
 	
 }

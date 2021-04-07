@@ -1,8 +1,15 @@
 package lebah.db.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 /**
@@ -18,6 +25,14 @@ public class Role {
 	private String id;
 	@Column(length=100)
 	private String name;
+	
+	@ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "menu_roles",
+            joinColumns = {@JoinColumn(name = "role_id")},
+            inverseJoinColumns = {@JoinColumn(name = "menu_id")}
+    )
+	private List<Menu> menus = new ArrayList<>();
 	
 	public Role() {
 		setId(lebah.util.UIDGenerator.getUID());
@@ -53,6 +68,16 @@ public class Role {
         hash = 53 * hash + (getId() != null ? getId().hashCode() : 0);
         return hash;
 	}
+
+	public List<Menu> getMenus() {
+		return menus;
+	}
+
+	public void setMenus(List<Menu> menus) {
+		this.menus = menus;
+	}
+	
+	
 	
 
 }

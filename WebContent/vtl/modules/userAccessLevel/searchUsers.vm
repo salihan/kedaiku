@@ -1,0 +1,9 @@
+
+<table class="table">
+	#foreach ( $u in $users )
+		<tr>
+			<td style="width:20px">$velocityCount.</td>
+			<td style="cursor:pointer" onclick="sendAjax2('getUserAccess','div_main','userId=$!u.id')">$u.userName - $!u.firstName</td>
+		</tr>
+	#end
+</table>

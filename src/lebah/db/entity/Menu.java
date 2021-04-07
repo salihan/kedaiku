@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,6 +14,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -34,21 +34,23 @@ public class Menu {
 	private String icon;
 	@Column(length=100)
 	private String moduleClassName;
+	
 	private int orderNo;
 	@ManyToOne
 	private Menu parent;
 	private int grouped;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy="parent")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy="parent")
  	private List<Menu> menus = new ArrayList<Menu>();
 	
 	
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "menu_roles",
             joinColumns = {@JoinColumn(name = "menu_id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id")}
     )
-	private List<Role> roles = new ArrayList<Role>();
+	private List<Role> roles = new ArrayList<>();
+    
     
     public Menu() {
     	setId(lebah.util.UIDGenerator.getUID());
@@ -138,8 +140,7 @@ public class Menu {
 	public void setMenus(List<Menu> menus) {
 		this.menus = menus;
 	}
-
-
+	
 	public List<Role> getRoles() {
 		return roles;
 	}

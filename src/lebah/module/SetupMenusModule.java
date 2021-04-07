@@ -105,6 +105,7 @@ public class SetupMenusModule extends LebahAdminModule {
 		boolean add = "".equals(menuId);
 		
 		String className = getParam("menu_className");
+		
 		String title = getParam("menu_title");
 		String icon = getParam("menu_icon");
 		String menus_size = getParam("menus_size");
@@ -115,6 +116,7 @@ public class SetupMenusModule extends LebahAdminModule {
 		Menu menu = add ? new Menu() : db.find(Menu.class, menuId);
 		
 		menu.setModuleClassName(className);
+		
 		menu.setTitle(title);
 		menu.setIcon(icon);
 		
