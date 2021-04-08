@@ -22,6 +22,9 @@
         <mapping class="lebah.db.entity.Log"/>
         <mapping class="lebah.db.entity.AccessLevel" />
         
+        <mapping class="mmdis.entity.Owner" />
+        <mapping class="mmdis.entity.Vessel" />
+        
 
     </session-factory>
 </hibernate-configuration>

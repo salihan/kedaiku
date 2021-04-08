@@ -1,0 +1,5 @@
+<div class="module_title">Owner Registration</div>
+
+<div id="div_main">
+	#parse("apps/ownerRegistration/listOwners.vm")
+</div>

@@ -1,0 +1,26 @@
+<div class="form-group" style="text-align:right">
+	<button type="button" class="btn btn-primary" onclick="sendAjax('addNewOwner','div_main','')">Add New&nbsp;<i class="fa fa-plus" aria-hidden="true"></i></button>
+</div>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Name</th>
+		</tr>
+	</thead>
+	<tbody>
+	#foreach ( $owner in $owners )
+		<tr>
+			<td>$owner.name</td>
+			<td>
+				<button type="button" class="btn btn-default btn-sm" onclick="sendAjax('editOwner','div_main','ownerId=$!owner.id')"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+			
+				<button type="button" class="btn btn-confirmation btn-danger"  data-toggle="modal" data-target="#confirmation" onclick="sendAjaxConfirm('Confirm', 'Are you sure to delete this data?', 'deleteOwner','div_main','ownerId=$owner.id')">
+					<i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;Delete
+				</button>
+			
+			</td>
+		</tr>
+	#end
+	</tbody>
+</table>

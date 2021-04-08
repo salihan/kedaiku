@@ -1,0 +1,14 @@
+<div class="form-group">
+	<label>Name</label>
+	<input name="ownerName" value="$!owner.name" class="form-control">
+	
+	
+</div>
+
+<div class="form-group">
+	#if ( !$owner )
+	<button type="button" class="btn btn-success" onclick="sendAjax('saveNewOwner','div_main','')">Save&nbsp;<i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+	#else
+	<button type="button" class="btn btn-primary" onclick="sendAjax('updateOwner','div_main','ownerId=$owner.id')">Update&nbsp;<i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+	#end
+</div>
