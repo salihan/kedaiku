@@ -1,10 +1,9 @@
 package lebah.module;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
+import lebah.db.entity.AccessLevel;
 import lebah.db.entity.AssignedMenu;
 import lebah.db.entity.AssignedMenuGroup;
 import lebah.db.entity.Menu;
@@ -71,6 +70,50 @@ public class UserAccessLevelModule extends LebahUserModule {
 		context.put("assignedMenus", parents);
 		
 		return path + "/userAccess.vm";
+	}
+	
+	
+	@Command("updateAccess")
+	public String updateAccess() {
+		
+		String value = getParam("value");
+		
+		User user = db.find(User.class, getParam("userId"));
+		Menu menu = db.find(Menu.class, getParam("menuId"));
+		
+		AccessLevel accessLevel = db.get("select a from AccessLevel a where a.user.id = '" + user.getId() + "' and a.menu.id = '" + menu.getId() + "'");
+		
+		if ( "true".equals(value)) {
+			if ( accessLevel == null ) {
+
+				accessLevel = new AccessLevel();
+				accessLevel.setUser(user);
+				accessLevel.setMenu(menu);
+				accessLevel.setLevel(0);
+				
+				db.save(accessLevel);
+				
+				menu.getAccessLevels().add(accessLevel);
+				db.update(menu);
+				
+				user.getAccessLevels().add(accessLevel);
+				db.update(user);
+				
+			}
+		} else {
+			if ( accessLevel != null ) {
+				db.delete(accessLevel);
+				
+				menu.getAccessLevels().remove(accessLevel);
+				db.update(menu);
+				
+				user.getAccessLevels().remove(accessLevel);
+				db.update(user);
+				
+			}
+		}
+		
+		return path + "/updateAccess.vm";
 	}
 	
 	

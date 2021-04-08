@@ -59,6 +59,9 @@ public class Menu {
     )
     private List<User> accessAdminUsers = new ArrayList<>();
     
+    @OneToMany (fetch=FetchType.LAZY, mappedBy="menu")
+    private List<AccessLevel> accessLevels = new ArrayList<>();
+    
     
     public Menu() {
     	setId(lebah.util.UIDGenerator.getUID());
@@ -220,4 +223,16 @@ public class Menu {
 	}
 
 
+	public List<AccessLevel> getAccessLevels() {
+		return accessLevels;
+	}
+
+
+	public void setAccessLevels(List<AccessLevel> accessLevels) {
+		this.accessLevels = accessLevels;
+	}
+
+	public boolean hasAccess(User user) {
+		return accessLevels.stream().filter(a -> a.getUser().getId().equals(user.getId())).findAny().isPresent();
+	}
 }

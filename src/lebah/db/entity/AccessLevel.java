@@ -22,8 +22,9 @@ public class AccessLevel {
 	@ManyToOne @JoinColumn(name="user_id")
 	private User user;
 	
-	private String moduleClassName;
-	
+	@ManyToOne @JoinColumn(name="menu_id")
+	private Menu menu;
+		
 	private int level; //0, 1, 2, 3
 	
 	
@@ -50,12 +51,9 @@ public class AccessLevel {
 
 
 	public String getModuleClassName() {
-		return moduleClassName;
+		return menu.getModuleClassName();
 	}
 
-	public void setModuleClassName(String moduleClassName) {
-		this.moduleClassName = moduleClassName;
-	}
 
 	public int getLevel() {
 		return level;
@@ -64,6 +62,16 @@ public class AccessLevel {
 	public void setLevel(int level) {
 		this.level = level;
 	}
+
+	public Menu getMenu() {
+		return menu;
+	}
+
+	public void setMenu(Menu menu) {
+		this.menu = menu;
+	}
+	
+	
 	
 	
 }

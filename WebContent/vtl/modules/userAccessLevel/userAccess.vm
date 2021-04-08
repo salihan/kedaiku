@@ -1,19 +1,21 @@
 
+<div class="form-group" style="text-align:right"><button type="button" class="btn btn-link" onclick="sendAjax2('getUserAccess','div_main','userId=$!usr.id')">Reload</button></div>
+
 <div class="section_title">$usr.firstName</div>
 
-##<div class="form-group" style="text-align:right"><button type="button" class="btn btn-link" onclick="sendAjax2('getUserAccess','div_main','userId=$!usr.id')">Reload</button></div>
+<div id="div_update"></div>
 
 <table class="table">
 	#foreach( $g in $assignedMenus )
-		#if ( $g.menu.hasAccessAdmin($user) )
+		#if ( $g.menu.hasAccessAdmin($user) ) ##current logged in user is admin to this menu
     		<tr>
     			<td colspan="3" style="font-weight:bold">$g.title </td>
     		</tr>
     		#foreach ( $m in $g.menus )
     		<tr>
     			<td style="width:10px">$velocityCount.</td>
-    			<td style="text-align:center;width:20px"><input type="checkbox" name="menuClassNames" value="$m.className">
-    			<td>$!m.title ($!m.className)</td>
+    			<td style="text-align:center;width:20px"><input type="checkbox" value="1" #if ( $m.menu.hasAccess($usr) ) checked #end onchange="sendAjaxQuiet('updateAccess','div_update','userId=$!usr.id&menuId=$!m.menu.id&value=' + this.checked)">
+    			<td>$!m.title ($!m.className) </td>
     		</tr>
     		#end
 		#end
