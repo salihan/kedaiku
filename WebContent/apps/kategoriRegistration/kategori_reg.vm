@@ -1,0 +1,45 @@
+<div class="container mt-5">
+	<div class="row">
+		<div class="col-12">
+			<hr>
+			
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label" for="nama">Nama</label>
+				<div class="col-sm-10">
+					<input class="form-control" id="kat_nama" name="kat_nama" type="text" value="">
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label" for="nama">Harga</label>
+				<div class="col-sm-10">
+					<!-- <input type="text" class="form-control" id="harga" name="harga" value=""> -->
+					<input class="form-control" id="kat_harga" min="0" name="kat_harga" required="" step=".01" type="number">
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label" for="description">Description</label>
+				<div class="col-sm-10">
+					<textarea class="form-control" id="kat_keterangan" name="kat_keterangan" rows="3"></textarea>
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label" for="description">Image</label>
+				<div class="col-sm-10">
+					<div class="input-group mb-3 mt-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+						</div>
+						<div class="custom-file">
+							<input class="custom-file-input" id="kat_gambar" name="kat_gambar" type="file"> <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+						</div>
+					</div>
+					<button type="button" class="btn btn-success" onclick="sendAjax('saveNewKategori','div_main','')">Save&nbsp;<i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+				</div>
+			</div>
+			
+		</div> <!-- end div class="col-12" -->
+	</div> <!-- end div class row -->
+</div> <!-- end div class container -->

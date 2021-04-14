@@ -1,0 +1,10 @@
+<div class="module_title">Daftar Kategori</div>
+
+<div id="div_main">
+	#parse("apps/kategoriRegistration/kategoriList.vm")
+</div>
+
+      
+
+    
+
