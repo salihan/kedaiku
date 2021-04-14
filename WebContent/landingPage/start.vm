@@ -1,16 +1,16 @@
 
+
 <div style="padding:10px;">
 
-
-<div class="jumbotron well" style="margin-top:20px">
-  <h2>Sistem Pendaftaran Kapal Laut</h2>    
-  
-  <p>
-	<img style="height:100px" src="../ship.png">
-  Selamat Datang ke Sistem Pendaftaran Kapal-Kapal Malaysia.
-  </p>
-</div>
-
+	<div class="jumbotron well" style="margin-top:20px">
+	  <h2>Sistem Jual Beli Online	</h2>    
+	  
+	  <p>
+		<img style="height:100px" src="../kedaiku_online.png">
+	  Selamat Datang ke Kedaiku Online.
+	  </p>
+	  
+	</div>
 
 </div>
 

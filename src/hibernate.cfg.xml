@@ -22,8 +22,11 @@
         <mapping class="lebah.db.entity.Log"/>
         <mapping class="lebah.db.entity.AccessLevel" />
         
-        <mapping class="mmdis.entity.Owner" />
-        <mapping class="mmdis.entity.Vessel" />
+        
+        <mapping class="kp.entity.Kategori" />
+        <mapping class="kp.entity.Produk" />     
+        <mapping class="mmdis.entity.Owner" /> 
+        <mapping class="mmdis.entity.Vessel" />  
         
 
     </session-factory>

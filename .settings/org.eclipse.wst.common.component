@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="perkapalan">
+    <wb-module deploy-name="kedaiku">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="perkapalan"/>
-        <property name="java-output-path" value="/perkapalan/build/classes"/>
+        <property name="java-output-path" value="/kedaiku/build/classes"/>
+        <property name="context-root" value="kedaiku"/>
     </wb-module>
 </project-modules>

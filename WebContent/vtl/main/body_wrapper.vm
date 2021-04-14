@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>LeBAH</title>
+<title>Kedaiku</title>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -79,7 +79,7 @@
 	
 	<div style="margin-top:300px;text-align:center">
 		##<a href="#" style="text-decoration:none" data-toggle="modal" data-target="#modalAbout">
-		&copy; 2021.  Sistem Perkapalan
+		&copy; 2021  Kedaiku
 		##</a>
 	</div>
 
