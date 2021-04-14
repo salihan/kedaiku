@@ -5,27 +5,34 @@
 <table class="table table-striped table-sm">
 	<thead class="thead-dark">
 		<tr>
+			<th>No.</th>
 			<th>ID</th>
 			<th>Nama</th>
 			<th></th>
 		</tr>
 	</thead>
-	<tbody>
-		<!--?php if( count($kategori) < 1) : ?-->
-		#if(!$kategoriList) 
+	<tbody>	
+		#if($kategories.isEmpty()) 
 		<tr>
-			<td colspan="3" style="height: 100px; text-align: center; vertical-align: middle;">No record found in categories</td>
-		</tr><!--<?php else : ?><?php $counter = 0; ?><?php foreach($kategori as $g) : ?>-->
+			<td colspan="5" style="height: 100px; text-align: center; vertical-align: middle;">Tiada Rekod Kategori</td>
+		</tr>
 		#else
+		#foreach ( $kategori in $kategories )
 		<tr>
-			<td>counter: $counter++;<!--<?= ++$counter;?>-->
-			</td>
-			<td>nama<!--<?= $g['nama']?>-->
-			</td>
+			<td>$velocityCount</td>
+			<td>$kategori.kat_id</td>
+			<td>$kategori.kat_nama</td>
 			<td>
-				<a class="btn btn-sm btn-primary" href="/kategori/edit/%3C?=%20$g['id'];?%3E">Edit</a> <button class="btn btn-sm btn-danger" onclick="confirm_delete( &lt;?= $g['id'];?&gt; )">Delete</button>
+				<button type="button" class="btn btn-default btn-sm" onclick="sendAjax('kategoriEdit','div_main','kat_id=$!kategori.kat_id')"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+			
+				<button type="button" class="btn btn-confirmation btn-danger"  data-toggle="modal" data-target="#confirmation" onclick="sendAjaxConfirm('Confirm', 'Are you sure to delete this data?', 'kategoriDelete','div_main','kat_id=$kategori.kat_id')">
+					<i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;Delete
+				</button>
+			
 			</td>
-		</tr><!--<?php endforeach; ?><?php endif; ?>-->
+		</tr>
 		#end
+		#end
+		
 	</tbody>
 </table>
