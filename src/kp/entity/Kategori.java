@@ -1,11 +1,12 @@
 package kp.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -17,15 +18,19 @@ public class Kategori {
 	@Column(length=50)
 	private String kat_nama;
 	
-	/*
-	@OneToMany (mappedBy="kategori", fetch=FetchType.LAZY)
-    @JoinTable(
-            name = "kategori_kat",
-            joinColumns = {@JoinColumn(name = "kat_id")},
-            inverseJoinColumns = {@JoinColumn(name = "prod_kat_id")}
-	)
-	*/
+	@OneToMany (fetch = FetchType.LAZY, mappedBy="kategori")
+    private List<Produk> produks;
+		
+	public List<Produk> getProduks() {
+		if ( produks == null ) produks = new ArrayList<>();
+		return produks;
+	}
+
+	public void setProduks(List<Produk> produks) {
+		this.produks = produks;
+	}
 	
+
 	public Kategori() {
 		setId(lebah.util.UIDGenerator.getUID());
 	}	
